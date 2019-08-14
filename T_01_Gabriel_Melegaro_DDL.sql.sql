@@ -21,7 +21,7 @@ create table Usuarios
 create table Categoria 
 (
 	IdCategoria int primary key identity
-	,Nome varchar(255) not null unique
+	,Nome varchar(255) not null 
 );
 
 create table Plataforma
@@ -30,12 +30,12 @@ create table Plataforma
 	,Nome varchar(255) not null
 );
 
-alter table dbo.Sinopse add Descricao varchar(1000);
+alter table dbo.Sinopse add Descricao varchar(2000);
 
 create table Sinopse
 (
 	IdSinopse int primary key identity
-	,Descricao varchar(1000) not null
+	,Descricao varchar(2000) not null
 );
 
 alter table dbo.Sinopse drop column Descricao;
@@ -63,3 +63,5 @@ alter table dbo.Usuarios add Permissao varchar(255);
 select * from Usuarios;
 
 ALTER TABLE dbo.Usuarios DROP COLUMN Permissao;
+
+SELECT * FROM Lancamento
