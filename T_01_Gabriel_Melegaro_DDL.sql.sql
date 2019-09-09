@@ -2,12 +2,6 @@ create database T_OPflix
 
 use T_OPflix
 
-create table Permissao
-(
-	IdPermissao int primary key identity not null
-	,Tipo varchar(255)
-);
-
 drop table Usuarios
 
 create table Usuarios
