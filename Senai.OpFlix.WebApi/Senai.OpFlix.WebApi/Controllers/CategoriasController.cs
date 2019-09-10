@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -28,14 +29,19 @@ namespace Senai.OpFlix.WebApi.Controllers
             return Ok(CategoriasRepository.Listar());
         }
 
-        [Authorize(Roles = "Administrador")]
         [HttpPost]
-        public void Cadastrar(Categoria Categorias)
+        public IActionResult Cadastrar(Categoria Categorias)
         {
             try
             {
-                int UsuarioId = Convert.ToInt32(HttpContext.User.Claims.First(x => x.Type == JwtRegisteredClaimNames.Jti).Value);
-                Categorias.UsuarioId = UsuarioId;
+                //Categorias.IdCategoria = IdCategoria.ToConvert
+                //Categorias.Nome = Nome;
+                CategoriasRepository.Cadastrar(Categorias);
+                return Ok();
+            }
+            catch(System.Exception ex)
+            {
+                return BadRequest(new { mensagem = ex.Message });
             }
         }
 

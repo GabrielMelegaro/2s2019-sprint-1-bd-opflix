@@ -31,7 +31,7 @@ namespace Senai.Ekips.WebApi
                 c.SwaggerDoc("v1",
                 new Swashbuckle.AspNetCore.Swagger.Info
                 {
-                    Title = "Ekips API",
+                    Title = "OpFlix API",
                     Version = "v1"
                 });
             });
@@ -49,13 +49,13 @@ namespace Senai.Ekips.WebApi
 
                     ValidateLifetime = true,
 
-                    IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("Ekips-chave-autenticacao")),
+                    IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("OpFlix-chave-autenticacao")),
 
                     ClockSkew = TimeSpan.FromMinutes(30),
 
-                    ValidIssuer = "Ekips.WebApi",
+                    ValidIssuer = "OpFLix.WebApi",
 
-                    ValidAudience = "Ekips.WebApi"
+                    ValidAudience = "OpFlix.WebApi"
                 };
             });
 
@@ -77,7 +77,7 @@ namespace Senai.Ekips.WebApi
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ekips API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "OpFlix API V1");
             });
 
             //app.Run(async (context) =>

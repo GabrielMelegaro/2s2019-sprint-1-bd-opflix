@@ -4,6 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -31,8 +32,8 @@ namespace Senai.OpFlix.WebApi.Controllers
         {
             try
             {
-                Usuarios Usuario = UsuarioRepository.BuscarPorEmailESenha(login);
-                if (Usuario == null)
+                Usuarios usuarioBuscado = UsuarioRepository.BuscarPorEmailESenha(login);
+                if (usuarioBuscado == null)
                 {
                     return NotFound(new { mensagem = "Email ou senha inválidos." });
                 }
@@ -40,12 +41,12 @@ namespace Senai.OpFlix.WebApi.Controllers
                 var claims = new[]
                 {
                     // email
-                    new Claim(JwtRegisteredClaimNames.Email, Usuario.Email),
+                    new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.Email),
                     new Claim("chave", "valor"),
                     // id
-                    new Claim(JwtRegisteredClaimNames.Jti, Usuario.IdUsuario.ToString()),
+                    new Claim(JwtRegisteredClaimNames.Jti, usuarioBuscado.IdUsuario.ToString()),
                     // é a permissão do usuário
-                    new Claim(ClaimTypes.Role, Usuario.Permissao),
+                    new Claim(ClaimTypes.Role, usuarioBuscado.Permissao),
                 };
 
                 var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("OpFlix-chave-autenticacao"));
