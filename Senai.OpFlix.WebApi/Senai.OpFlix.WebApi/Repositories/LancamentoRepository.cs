@@ -1,4 +1,5 @@
 ﻿using Senai.OpFlix.WebApi.Domains;
+using Senai.OpFlix.WebApi.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,22 +7,22 @@ using System.Threading.Tasks;
 
 namespace Senai.OpFlix.WebApi.Repositories
 {
-    public class LancamentoRepository
+    public class LancamentoRepository : ILancamentoRepository
     {
+        public List<Lancamento> Listar()
+        {
+            using (OpFlixContext ctx = new OpFlixContext())
+            {
+                return ctx.Lancamento.ToList();
+            }
+        }
+
         public void Cadastrar(Lancamento lancamentos)
         {
             using (OpFlixContext ctx = new OpFlixContext())
             {
                 ctx.Lancamento.Add(lancamentos);
                 ctx.SaveChanges();
-            }
-        }
-
-        public List<Lancamento> Listar()
-        {
-            using (OpFlixContext ctx = new OpFlixContext())
-            {
-                return ctx.Lancamento.ToList();
             }
         }
 
@@ -44,13 +45,23 @@ namespace Senai.OpFlix.WebApi.Repositories
             }
         }
 
+        //public void Deletar(int id)
+        //{
+        //    using (OpFlixContext ctx = new OpFlixContext())
+        //    {
+        //        Lancamento LancamentoBuscado = ctx.Lancamento.Find(id);
+        //        ctx.Lancamento.Remove(LancamentoBuscado);
+        //        ctx.SaveChanges();   
+        //    }
+        //}
+
         public void Deletar(int id)
         {
             using (OpFlixContext ctx = new OpFlixContext())
             {
                 Lancamento LancamentoBuscado = ctx.Lancamento.Find(id);
                 ctx.Lancamento.Remove(LancamentoBuscado);
-                ctx.SaveChanges();   
+                ctx.SaveChanges();
             }
         }
     }

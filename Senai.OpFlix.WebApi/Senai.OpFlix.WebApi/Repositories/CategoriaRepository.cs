@@ -9,14 +9,6 @@ namespace Senai.OpFlix.WebApi.Repositories
 {
     public class CategoriaRepository : ICategoriaRepository
     {
-        public void Cadastrar(Categoria categorias)
-        {
-            using (OpFlixContext ctx = new OpFlixContext())
-            {
-                ctx.Categoria.Add(categorias);
-                ctx.SaveChanges();
-            }
-        }
 
         public List<Categoria> Listar()
         {
@@ -26,6 +18,14 @@ namespace Senai.OpFlix.WebApi.Repositories
             }
         }
 
+        public void Cadastrar(Categoria categorias)
+        {
+            using (OpFlixContext ctx = new OpFlixContext())
+            {
+                ctx.Categoria.Add(categorias);
+                ctx.SaveChanges();
+            }
+        }
         public Categoria BuscarPorId(int id)
         {
             using (OpFlixContext ctx = new OpFlixContext())
