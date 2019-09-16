@@ -44,7 +44,6 @@ namespace Senai.OpFlix.WebApi.Controllers
             }
         }
 
-        [Authorize(Roles = "ADMINISTRADOR")]
         [HttpGet("{id}")]
         public IActionResult BuscarPorId(int id)
         {

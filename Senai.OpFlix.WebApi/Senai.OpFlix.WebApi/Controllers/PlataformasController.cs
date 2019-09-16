@@ -22,8 +22,7 @@ namespace Senai.OpFlix.WebApi.Controllers
         {
              PlataformasRepository = new PlataformaRepository();
         }
-
-        [Authorize(Roles = "ADMINISTRADOR")]
+ 
         [HttpGet]
         public IActionResult Listar()
         {
@@ -45,7 +44,6 @@ namespace Senai.OpFlix.WebApi.Controllers
             }
         }
 
-        [Authorize(Roles = "ADMINISTRADOR")]
         [HttpGet("{id}")]
         public IActionResult BuscarPorId(int id)
         {
