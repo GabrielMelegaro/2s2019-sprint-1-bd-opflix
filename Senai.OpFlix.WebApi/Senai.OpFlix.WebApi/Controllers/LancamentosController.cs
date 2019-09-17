@@ -29,7 +29,7 @@ namespace Senai.OpFlix.WebApi.Controllers
             return Ok(LancamentoRepository.Listar());
         }
 
-        [Authorize(Roles = "ADMINISTRADOR")]
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public IActionResult Cadastrar(Lancamento Lancamentos)
         {
@@ -44,6 +44,7 @@ namespace Senai.OpFlix.WebApi.Controllers
             }
         }
 
+        [Authorize(Roles = "admin")]
         [HttpGet("{id}")]
         public IActionResult BuscarPorId(int id)
         {
@@ -53,7 +54,7 @@ namespace Senai.OpFlix.WebApi.Controllers
             return Ok(Lancamentos);
         }
 
-        [Authorize(Roles = "ADMINISTRADOR")]
+        [Authorize(Roles = "admin")]
         [HttpPut]
         public IActionResult Atualizar(Lancamento lancamentos)
         {
@@ -71,7 +72,7 @@ namespace Senai.OpFlix.WebApi.Controllers
             }
         }
 
-        [Authorize(Roles = "ADMINISTRADOR")]
+        [Authorize(Roles = "admin")]
         [HttpDelete("{id}")]
         public IActionResult Deletar(int id)
         {

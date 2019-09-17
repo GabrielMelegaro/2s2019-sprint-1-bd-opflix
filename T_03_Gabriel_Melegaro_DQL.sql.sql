@@ -1,4 +1,3 @@
-
 Use T_OPflix
 
 Select * from Permissao
@@ -31,4 +30,4 @@ where Categoria.Nome = @Categoria;
 
 EXEC ListarCategoria 'Terror';
 
-create procedure ListarCategoria @Categoria varchar(255)
+

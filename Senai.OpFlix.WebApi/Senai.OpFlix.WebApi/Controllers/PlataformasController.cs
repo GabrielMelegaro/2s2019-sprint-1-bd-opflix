@@ -29,7 +29,7 @@ namespace Senai.OpFlix.WebApi.Controllers
             return Ok(PlataformasRepository.Listar());
         }
 
-        [Authorize(Roles = "ADMINISTRADOR")]
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public IActionResult Cadastrar(Plataforma Plataformas)
         {
@@ -53,7 +53,7 @@ namespace Senai.OpFlix.WebApi.Controllers
             return Ok(Plataformas);
         }
 
-        [Authorize(Roles = "ADMINISTRADOR")]
+        [Authorize(Roles = "admin")]
         [HttpPut]
         public IActionResult Atualizar(Plataforma plataformas)
         {

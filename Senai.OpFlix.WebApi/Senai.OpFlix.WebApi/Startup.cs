@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Senai.Ekips.WebApi
+namespace Senai.OpFlix.WebApi
 {
     public class Startup
     {

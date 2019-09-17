@@ -7,7 +7,6 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Senai.Ekips.WebApi;
 using Senai.OpFlix.WebApi;
 
 namespace Senai.OpFlix.WebApi
